@@ -30,6 +30,9 @@
             {% endif %}
             {{ column.data_type|default('ANY') }}{% if not column.null %} NOT NULL{% endif %}
             {% if column.default %}(default {{ column.default }}{% endif %}
+            {% if row[field.name] is string and row[field.name].startswith('https://') %}
+				      <a href="{{ row[field.name] }}" target="_blank">🌍 Link</a><br>
+			      {% endif %}
           </small>
         </div>
       </div>
