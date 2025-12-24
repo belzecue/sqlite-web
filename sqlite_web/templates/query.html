@@ -89,9 +89,6 @@
                     <code>NULL</code>
                   {% else %}
                     {{ value|value_filter|safe }}
-                    {% if value is string and value.startswith('https://') %}
-                      <a href="{{ value }}" target="_blank">🌍</a><br>
-                    {% endif %}
                   {% endif %}
                 </td>
               {% endfor %}
