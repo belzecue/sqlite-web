@@ -85,7 +85,14 @@
             <tr>
               {% for value in row %}
                 <td>
-                  {% if value is none %}<code>NULL</code>{% else %}{{ value|value_filter|safe }}{% endif %}
+                  {% if value is none %}
+                    <code>NULL</code>
+                  {% else %}
+                    {{ value|value_filter|safe }}
+                    {% if value is string and value.startswith('https://') %}
+                      <a href="{{ value }}" target="_blank">🌍</a><br>
+                    {% endif %}
+                  {% endif %}
                 </td>
               {% endfor %}
             </tr>
